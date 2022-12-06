@@ -1,41 +1,36 @@
-from tkinter import*
+from tkinter import *
 from tkinter import ttk
 
-clicks = 0
-click = 0
-clic = 0
-def click_butt():  # функция по количеству тыков
-    global clicks
-    clicks += 1
-    btn["text"] = f"{clicks} книг Толстого"
 
-def click_butt2():  # функция по количеству тыков
-    global click
-    click += 1
-    btn3["text"] = f"{click} книг Фета"
+def display():
+    Label["text"] = entry.get()
 
-def click_butt3():  # функция по количеству тыков
-    global clic
-    clic += 1
-    btn2["text"] = f"{clic} книг Гоголя"
+
+def clear():
+    entry.delete(0, END)
+
 
 root = Tk()
 root.title("Окно библиотеки!")
 root.geometry("380x150")
 
-Label = Label(text="Вас приветстыует Ломоносовская библиотека! \n Чтобы нам подготовиться, укажите сколько книг хотите взять.")
-Label.grid(row=1, column=1, columnspan=3, padx=10, pady=10 )
 
-root.minsize(100,200)
-root.maxsize(1000,1000)
+Label = ttk.Label()
+Label.pack(anchor=NW, padx=8, pady=8)
 
-btn = ttk.Button(text = "Толстой", command=click_butt)
-btn.grid(row=2, column=1, ipadx= 6, ipady=5)
 
-btn2 = ttk.Button(text = "Гоголь", command=click_butt3)
-btn2.grid(row=2, column=2, ipadx= 5, ipady=6)
+entry = ttk.Entry()
+entry.pack(anchor=NW, padx=8, pady=8)
 
-btn3 = ttk.Button(text = "Фет", command=click_butt2)
-btn3.grid(row=2, column=3, ipadx= 6, ipady=5)
+
+entry.insert(0,"привет, студент!")
+
+
+display_button = ttk.Button(text="Display", command=display)
+display_button.pack(side=LEFT, anchor=N, pady=6, padx=6)
+
+clear_button = ttk.Button(text="Clear", command=clear)
+clear_button.pack(side=LEFT, anchor=N, pady=6, padx=6)
+
 
 root.mainloop()
